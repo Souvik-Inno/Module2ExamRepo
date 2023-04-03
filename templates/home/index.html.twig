@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Login/Sign Up
+{% endblock %}
+
+{% block javascripts %}
+	<script src="{{ asset('js/loginquery.js') }}"></script>
+{% endblock %}
+
+{% block body %}
+	<section class="login-home m-5">
+		<div class="login-main--container container-shrimp blur-container">
+			<form method="post" action="/feed">
+				<div class="form-group row">
+					<label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
+					<div class="col-sm-10">
+						<input type="email" class="form-control" id="inputEmail3" placeholder="Email" name="loginEmail" required>
+					</div>
+				</div>
+				<div class="form-group row">
+					<label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
+					<div class="col-sm-10">
+						<input type="password" class="form-control" id="inputPassword3" name="loginPass" placeholder="Password" required>
+						<i class="bi bi-eye-slash" id="togglePasswordLogin"></i>
+					</div>
+				</div>
+				<div class="form-group row">
+					<label for="privilege" class="col-sm-3 col-form-label">Enter as</label>
+					<div class="col-sm-9">
+						<input type="text" class="form-control" id="privilege" placeholder="User/Admin" name="privilege" required>
+					</div>
+				</div>
+                <span class="red" id="privilegeSpan">Enter privilege properly</span>
+				<div class="form-group row">
+					<div class="col-sm-10">
+						<button type="submit" name="loginSubmit" id="loginSubmit" class="btn btn-primary">Sign in</button>
+					</div>
+				</div>
+				<span class="red">{{ errormessage }}</span>
+			</form>
+		</div>
+	</div>
+
+</section>{% endblock %}

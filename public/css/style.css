@@ -1,0 +1,260 @@
+/* css root variables */
+:root {
+  --fs-base: 18px;
+  --fs-14: 0.875rem;
+  --fs-20: 1.25rem;
+  --fs-64: 4.25rem;
+  --white: #e7e4e4;
+  --c-blue: #007a82;
+  --f-color: #676766;
+  --h-color: #3d3c3c;
+  --yellow: #febb0c;
+}
+
+/* base declaration */
+*,
+html,
+body {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+html,
+body {
+  font-weight: 300;
+  font-size: var(--fs-base);
+  color: var(--white);
+  overflow-x: hidden;
+  background: url('../images/grey-bg.jpg');
+}
+a, a:hover {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Global classes */
+.container {
+  max-width: 1148px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+.container-form {
+  max-width: 800px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+.container-shrimp {
+  max-width: 550px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 40px;
+  border: solid 1px black;
+  border-radius: 25px;
+}
+.bg-image {
+  background: url('../images/formbgimage.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: white;
+  height: 100%;
+}
+.blur-container {
+  color: white;
+  backdrop-filter: blur(8px);
+  padding: 25px;
+  background-color: rgba(0, 0, 0, 0.3);
+  border: none;
+  border-radius: 25px;
+}
+.red {
+  color: red;
+}
+.green {
+  color: green;
+}
+.container-extend {
+  margin: 0 -15px;
+}
+.flex-wrapper {
+  display: flex;
+}
+.flex-mid {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.flex-just-mid {
+  display: flex;
+  justify-content: center;
+}
+.flex-col {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: flex-start;
+  gap: 10px;
+}
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+ul, li {
+  list-style: none;
+}
+
+/* table css */
+table {
+  width: 50%;
+  border-collapse: collapse;
+  border: 1px solid white;
+}
+table td,
+th {
+  border: 1px solid white;
+  padding: 8px;
+  text-align: center;
+}
+
+/* Result styling. */
+.profile-pic {
+  width: 400px;
+  border-radius: 100%;
+}
+.bg-danger {
+  background-color: red;
+}
+
+/* Loginpage styling. */
+.login-main, .forgot-main {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* SignUpPage styling. */
+.wrong, .correct, .passWrong {
+  display: none;
+}
+.form-group {
+  position: relative;
+}
+#togglePassword {
+  position: absolute;
+  right: 40px;
+  top: 40px;
+  z-index: 1;
+  color: black;
+}
+/* Login Page styling. */
+#togglePasswordLogin {
+  position: absolute;
+  right: 40px;
+  top: 8px;
+  z-index: 1;
+  color: black;
+}
+
+/* Feed page styling. */
+.main-container {
+  display: flex;
+  width: 100%;
+}
+.sidebar {
+  width: 25%;
+  background: #0a1729;
+  margin: 0 5px 5px 5px;
+}
+.items-container {
+  width: 75%;
+}
+.product-details {
+  height: 300px;
+  width: 260px;
+  margin: 5px 5px 5px 0;
+  border-radius: 5px;
+}
+.product-details--content {
+  padding: 10px;
+}
+.products {
+  display: flex;
+  flex-wrap: wrap;
+}
+.category-text {
+  padding-bottom: 40px;
+}
+.download-btn {
+  width: 50%;
+}
+
+/* Feed Styling. */
+.box {
+  background-color: #343a40;
+  border-radius: 4px;
+  width: 600px;
+}
+
+.status-share {
+  background-color: #1b86f9;
+  border: none;
+  color: #fff;
+  border-radius: 4px;
+  padding: 10px 15px;
+  margin-left: auto;
+  box-shadow: 0 0 10px #1b86f9;
+  cursor: pointer;
+}
+.status-main {
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid black;
+  padding-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.status-textarea {
+  flex-grow: 1;
+  background-color: transparent;
+  border: none;
+  resize: none;
+  margin-top: 15px;
+  color: #fff;
+  max-width: calc(100% - 70px);
+}
+
+.status-textarea::placeholder {
+  color: #ffff;
+}
+
+.status-textarea:focus {
+  border: none;
+}
+
+.status-actions {
+  display: flex;
+  padding: 10px 20px;
+}
+
+.app-img {
+  width: 100px;
+}
+.privilegeSpan {
+  display: none;
+}
+
+#add-item-dialog {
+  display: none;
+}
+
+/* Styles for the form inside the dialog */
+#add-item-dialog form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+

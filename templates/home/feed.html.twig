@@ -1,0 +1,110 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Apps feed
+{% endblock %}
+
+{% block javascripts %}
+	<script src="{{ asset('js/feedquery.js') }}"></script>
+{% endblock %}
+
+{% block body %}
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<div class="navbar-container container">
+			<a class="navbar-brand" href="#">App Store</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item active">
+						<a class="nav-link" href="#">Home
+							<span class="sr-only">(current)</span>
+						</a>
+					</li>
+				</ul>
+				<form class="form-inline my-2 my-lg-0" action="logout.php">
+					<button class="btn btn-outline-danger my-2 my-sm-0" type="submit">Log Out</button>
+				</form>
+			</div>
+		</div>
+	</nav>
+	<div class="main m-3">
+		<div class="main-container container">
+			<div class="sidebar flex-align-mid">
+				<div class="sidebar-container flex-column">
+					<div class="profile-section flex-mid ">
+						<a href="/profile">
+							<h6>My Apps</h6>
+						</a>
+					</div>
+				</div>
+			</div>
+			<div class="items-container">
+				{% if admin == TRUE %}
+					<div class="status box">
+						<div class="status-main">
+							<div class="app-name">
+								<input type="text" class="status-textarea" name="app_name" id="app_name" placeholder="Enter app name">
+							</div>
+						</div>
+						<div class="status-actions">
+							<div class="status-menu">
+								<input type="file" id="image" name="image">
+							</div>
+							<button class="status-share" id="status-share-btn">Create App</button>
+						</div>
+					</div>
+				{% endif %}
+				<ul class="products" id="products">
+
+					{% set iterator = 0 %}
+					{% for app in apps %}
+						<li class="flex-just-mid">
+							<div class="product-details bg-dark">
+								{% if admin == TRUE %}
+									<div class="editOption">
+										<a href="#" id="editApp" onclick="editApp()">Edit App</a>
+									</div>
+								{% endif %}
+								<div class="product-details--content flex-column">
+									<h5>
+										{{app.getAppName()}}
+									</h5>
+									<span class="app-desc">
+										{{ app.getDescription() }}
+									</span>
+									<img src={{ app.getImage() }} class="app-img">
+									<span>
+										{{ app.getDeveloper() }}
+									</span>
+									<span id="{{ iterator }}">
+										{{ app.getDownloadCount() }}
+									</span>
+									<button class="download-btn" onclick="downloadApp({{ app.getId }}, {{ iterator }})">Download</button>
+
+									<div class="post-comment">
+										<input type="text" name="comment-input" class="post-comment-input" placeholder="Enter Comment...">
+										<button id="comment-post-btn" class="comment-share" onclick="reviewShare({{ app.getId }}, {{ iterator }})">Post Review</button>
+									</div>
+									<ul class="comments-section" id="comments-section">
+										{% for review in app.getReviews()|reverse %}
+											<li>
+												<div class="comment box">
+													<div class="status-main" id="comment-main">
+														<textarea id="comment-box-form" class="comment-textarea" name="post-text" disabled>{{ review.getText() }}</textarea>
+													</div>
+												</div>
+											</li>
+										{% endfor %}
+									</ul>
+								</div>
+							</div>
+						</li>
+						{% set iterator = iterator + 1 %}
+					{% endfor %}
+				</ul>
+			</div>
+		</div>
+	</div>
+{% endblock %}
